@@ -3,6 +3,8 @@ var myArray = ["Bermuda","Ukraine","Belize","Monaco","Djibouti","Italy","Switzer
 
 var randomItem = myArray[Math.floor(Math.random()*myArray.length)]; 
 
+document.getElementById("quiz-ans-1").innerHTML = randomItem;
+
 
 require([
       "esri/Map",

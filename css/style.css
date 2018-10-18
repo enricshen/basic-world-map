@@ -13,14 +13,28 @@ html,
 	width: 90%;
 	height: 600px;
 }
-.square {
-	width: 20%;
-	background: blue;
-	padding-bottom: 10%;
-	float: left;
-	margin: 1.66%;
-	border-radius: 15%;
-	transition: background 0.6s;
-	-webkit-transition: background 0.6s;
-	-moz-transition: background 0.6s;
+
+#quiz-options {
+  margin: 26px 0;
 }
+.quiz-ans-btn {
+	font-size: 20px;
+  color: #fff;
+/*   display: block;   */
+  width: 45%;
+  min-height: 75px;
+  padding: 5px;
+  background-color: #669999;
+  border: 1px solid rgba(0, 0, 0, 0.075);
+  border-radius: 50px;
+  outline: none;
+  letter-spacing: .05em;
+  transition: all 0.5s;
+  margin: 8px;
+/*   margin:auto; */
+  box-shadow: 0px 1px 4px rgba(0,0,0, 0.10); 
+  white-space: normal; 
+}
+.quiz-ans-btn:hover { color: #fff; background-color: #476b6b; }
+.btn.quiz-ans-btn:active, .btn.quiz-ans-btn:focus { color: #fff; background-color: #334d4d; }
+
