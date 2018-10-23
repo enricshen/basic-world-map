@@ -9,14 +9,18 @@ var randomItem2 = myArray[Math.floor(Math.random()*myArray.length)];
 var answersArray = [];
 answersArray.push(chosenItem, randomItem0, randomItem1,randomItem2);
 
+console.log(answersArray);
+
 //create buttons
 function createButtons(){
+  for(var i = 0; i < 4; i++){
    var button = document.createElement("button");
-   button.id = "quiz-ans-1";
+   //button.id = "quiz-ans-1";
     button.classList.add("btn","quiz-ans-btn");
-   var txt = document.createTextNode(chosenItem);
+   var txt = document.createTextNode(answersArray[i]);
     button.appendChild(txt);
      document.querySelector("#quiz-options").appendChild(button);
+   }
 }
 
  createButtons();
