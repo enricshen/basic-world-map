@@ -19,20 +19,18 @@ console.log(chosenItem);
 //create buttons
 function createButtons(){
   for(var i = 0; i < 4; i++){
-   var button = document.createElement("button");
-   //button.id = "quiz-ans-1";
-    button.classList.add("btn","quiz-ans-btn");
-   var txt = document.createTextNode(answersArray[i]);
-    button.appendChild(txt);
-     document.querySelector("#quiz-options").appendChild(button);
+	   var button = document.createElement("button");
+	   button.id = "quiz-ans-" + i;
+	    button.classList.add("quiz-ans-btn");
+	   var txt = document.createTextNode(answersArray[i]);
+	    button.appendChild(txt);
+	    document.querySelector("#quiz-options").appendChild(button);
+	    
    }
 }
 
  createButtons();
 
-
-//document.getElementById("quiz-ans-1").innerHTML = chosenItem;
-//document.getElementById("quiz-ans-2").innerHTML = randomItem0;
 
 
 require([
