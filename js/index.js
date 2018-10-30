@@ -24,15 +24,36 @@ function createButtons(){
 	    button.classList.add("quiz-ans-btn");
 	   var txt = document.createTextNode(answersArray[i]);
 	    button.appendChild(txt);
-	    document.querySelector("#quiz-options").appendChild(button);
-	    
+	    document.querySelector("#quiz-options").appendChild(button);	    
    }
 }
-
  createButtons();
 
+ //Handle click events
+var oneElement = document.querySelector("#quiz-ans-0");
+var twoElement = document.querySelector("#quiz-ans-1");
+var threeElement = document.querySelector("#quiz-ans-2");
+var fourElement = document.querySelector("#quiz-ans-3");
+
+oneElement.addEventListener("click", doSomething, false);
+twoElement.addEventListener("click", doSomething, false);
+threeElement.addEventListener("click", doSomething, false);
+fourElement.addEventListener("click", doSomething, false);
+
+function doSomething(e) {
+    var clickedItem = e.target.innerHTML;
+    if (clickedItem === chosenItem){
+      alert("Correct!!")
+    } else {
+      alert("Wrong!!!")
+    }
+}
 
 
+
+
+
+//create Map
 require([
       "esri/Map",
       "esri/views/MapView",
