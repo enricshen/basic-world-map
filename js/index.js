@@ -10,11 +10,10 @@ for(var i = 0; i < 4; i++){
   answersArray.push(randomItem);
 }
 
-console.log(answersArray);
 
 //select a country from the list
 var chosenItem = answersArray[Math.floor(Math.random()*4)]
-console.log(chosenItem);
+
 
 //create buttons
 function createButtons(){
@@ -56,7 +55,7 @@ function doSomething(e) {
 //create Map
 require([
       "esri/Map",
-      "esri/views/MapView",
+      "esri/views/SceneView",
       "esri/tasks/support/Query",
       "esri/tasks/QueryTask",
       "esri/Graphic",
@@ -64,7 +63,7 @@ require([
       "esri/symbols/SimpleFillSymbol",
       "dojo/domReady!"
     ], 
-        function(Map, MapView, Query, QueryTask, Graphic, Polygon, SimpleFillSymbol) {
+        function(Map, SceneView, Query, QueryTask, Graphic, Polygon, SimpleFillSymbol) {
       
     var countrySelected = "Country = "  + "'"+ chosenItem +"'";
       //var definition = ["Country = 'Australia'"];
@@ -73,10 +72,10 @@ require([
     //
         
     var map = new Map({
-        basemap: "streets",
+        basemap: "satellite",
        });
 
-    var view = new MapView({
+    var view = new SceneView({
         container: "viewDiv",
         map: map,
         });
@@ -87,7 +86,7 @@ require([
       query.returnGeometry = true;
    
     var queryTask = new QueryTask({
-         url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries_(Generalized)/FeatureServer/0"
+         url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0"
       });
       
    // Execute the query
@@ -100,12 +99,15 @@ require([
                symbol: {
                  type: "simple-fill",
                  color: [255, 170, 0, 0.69],
-                 width: 1.2,
+                outline: {  // autocasts as new SimpleLineSymbol()
+                            color: [255, 255, 255, 0.5],
+                            width: 2
+                          }
                },
-               popupTemplate: {
+              /* popupTemplate: {
                  title: "{TRL_NAME}",
                  content: "{*}"
-               }
+               } */
              });
             
              view.graphics.add(g);
