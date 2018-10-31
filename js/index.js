@@ -34,23 +34,21 @@ var twoElement = document.querySelector("#quiz-ans-1");
 var threeElement = document.querySelector("#quiz-ans-2");
 var fourElement = document.querySelector("#quiz-ans-3");
 
-oneElement.addEventListener("click", doSomething, false);
-twoElement.addEventListener("click", doSomething, false);
-threeElement.addEventListener("click", doSomething, false);
-fourElement.addEventListener("click", doSomething, false);
+oneElement.addEventListener("click", checkAnswer, false);
+twoElement.addEventListener("click", checkAnswer, false);
+threeElement.addEventListener("click", checkAnswer, false);
+fourElement.addEventListener("click", checkAnswer, false);
 
-function doSomething(e) {
-    var clickedItem = e.target.innerHTML;
+function checkAnswer(event) {
+    var clickedItem = event.target.innerHTML;
     if (clickedItem === chosenItem){
-      alert("Correct!!")
+       event.target.classList.add("correct");
+       //alert("Correct!!")
     } else {
-      alert("Wrong!!!")
+       event.target.classList.add("incorrect");
+       //alert("Wrong!!!")
     }
 }
-
-
-
-
 
 //create Map
 require([

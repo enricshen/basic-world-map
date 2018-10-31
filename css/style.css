@@ -3,13 +3,13 @@ html,
     #viewDiv {
       text-align: center;
       padding: 0;
-      margin: 2px;
+      margin: 0 auto;
       
     }
 
 
 .container {
-	margin: 20px auto;
+	margin: 0 auto;
 	width: 90%;
 	height: 600px;
 }
@@ -21,7 +21,7 @@ html,
 	font-size: 20px;
   color: #fff;
 /*   display: block;   */
-  width: 45%;
+  width: 40%;
   min-height: 75px;
   padding: 5px;
   background-color: #669999;
@@ -36,5 +36,14 @@ html,
   white-space: normal; 
 }
 .quiz-ans-btn:hover { color: #fff; background-color: #476b6b; }
+
+.quiz-ans-btn.correct {
+  background-color: #29a329;
+}
+.quiz-ans-btn.incorrect {
+  background-color: #e60000;
+}
+
+
 .btn.quiz-ans-btn:active, .btn.quiz-ans-btn:focus { color: #fff; background-color: #334d4d; }
 
