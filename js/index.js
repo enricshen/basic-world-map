@@ -30,7 +30,7 @@ function createButtons(){
 }
  createButtons();
 
- //Handle click events
+ //Handle button clicks
 var oneElement = document.querySelector("#quiz-ans-0");
 var twoElement = document.querySelector("#quiz-ans-1");
 var threeElement = document.querySelector("#quiz-ans-2");
@@ -54,80 +54,91 @@ function checkAnswer(event) {
     }
 }
 
-//create Map
-require([
-      "esri/Map",
-      "esri/views/SceneView",
-      "esri/tasks/support/Query",
-      "esri/tasks/QueryTask",
-      "esri/Graphic",
-      "esri/geometry/Polygon",
-      "esri/symbols/SimpleFillSymbol",
-      "dojo/domReady!"
-    ], 
-        function(Map, SceneView, Query, QueryTask, Graphic, Polygon, SimpleFillSymbol) {
-      
-    var countrySelected = "Country = "  + "'"+ chosenItem +"'";
-      //var definition = ["Country = 'Australia'"];
-    //console.log(countrySelected); 
-  
-    //
-        
-    var map = new Map({
-        basemap: "satellite",
-       });
+//handle reset button
+var resetButton = document.querySelector("#reset");
+resetButton.addEventListener("click", createGame, false);
 
-    var view = new SceneView({
-        container: "viewDiv",
-        map: map,
-        });
-  
-    var query = new Query();
-      query.where = countrySelected
-      query.outFields = ["*"];
-      query.returnGeometry = true;
-   
-    var queryTask = new QueryTask({
-         url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0"
-      });
-      
-   // Execute the query
-      queryTask.execute(query)
-        .then(function(result){
-          result.features.forEach(function(item){
-             var g = new Graphic({
-               geometry: item.geometry,
-               attributes: item.attributes,
-               symbol: {
-                 type: "simple-fill",
-                 color: [255, 170, 0, 0.69],
-                outline: {  // autocasts as new SimpleLineSymbol()
-                            color: [255, 255, 255, 0.5],
-                            width: 2
-                          }
-               },
-              /* popupTemplate: {
-                 title: "{TRL_NAME}",
-                 content: "{*}"
-               } */
-             });
-            
-             view.graphics.add(g);
-          });
 
-          // Zoom to the data returned
-          view.goTo({
-            target: view.graphics
-          });
-
-         })
-      
-        .otherwise(function(e){
-          console.log(e);
-        });
-
+function createGame(){
+  //create Map
+  require([
+    "esri/Map",
+    "esri/views/SceneView",
+    "esri/tasks/support/Query",
+    "esri/tasks/QueryTask",
+    "esri/Graphic",
+    "esri/geometry/Polygon",
+    "esri/symbols/SimpleFillSymbol",
+    "dojo/domReady!"
+  ], 
+      function(Map, SceneView, Query, QueryTask, Graphic, Polygon, SimpleFillSymbol) {
     
-  })
+  var countrySelected = "Country = "  + "'"+ chosenItem +"'";
+    //var definition = ["Country = 'Australia'"];
+  //console.log(countrySelected); 
+
+  //
+      
+  var map = new Map({
+      basemap: "satellite",
+     });
+
+  var view = new SceneView({
+      container: "viewDiv",
+      map: map,
+      });
+
+  var query = new Query();
+    query.where = countrySelected
+    query.outFields = ["*"];
+    query.returnGeometry = true;
+ 
+  var queryTask = new QueryTask({
+       url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/World_Countries/FeatureServer/0"
+    });
+    
+ // Execute the query
+    queryTask.execute(query)
+      .then(function(result){
+        result.features.forEach(function(item){
+           var g = new Graphic({
+             geometry: item.geometry,
+             attributes: item.attributes,
+             symbol: {
+               type: "simple-fill",
+               color: [255, 170, 0, 0.69],
+              outline: {  // autocasts as new SimpleLineSymbol()
+                          color: [255, 255, 255, 0.5],
+                          width: 2
+                        }
+             },
+            /* popupTemplate: {
+               title: "{TRL_NAME}",
+               content: "{*}"
+             } */
+           });
+          
+           view.graphics.add(g);
+        });
+
+        // Zoom to the data returned
+        view.goTo({
+          target: view.graphics
+        });
+
+       })
+    
+      .otherwise(function(e){
+        console.log(e);
+      });
+
+  
+})
+
+}
+
+createGame();
+
 
 
 
