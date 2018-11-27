@@ -60,8 +60,12 @@ function checkAnswer(event) {
 }
 
 //handle reset button
+function reload(){
+  location.reload()
+};
+ 
 var resetButton = document.querySelector("#reset");
-resetButton.addEventListener("click", init, false);
+resetButton.addEventListener("click", reload, false);
 
 
 function createMap(){
