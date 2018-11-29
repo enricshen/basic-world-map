@@ -64,11 +64,11 @@ function checkAnswer(event) {
           };
         var resetButton = document.querySelector("#reset");
         resetButton.addEventListener("click", reload, false);
-        
+
        //alert("Correct!!")
     } else {
        event.target.classList.add("incorrect");
-       messageDisplay.textContent = "Try Again"
+       messageDisplay.textContent = "Wrong! Try Again"
        //alert("Wrong!!!")
     }
 }
