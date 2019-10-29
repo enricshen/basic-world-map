@@ -13,7 +13,29 @@
 </head>
 
 <body>
-  <h1>World Map Quiz </h1>
+<h1>World Map Quiz </h1>
+<div id="quiz">
+    <div class="container-fluid">
+    <div id="quiz-stats" class="row text-center">
+      <div class="col-xs-3">
+        <i class="fa fa-bar-chart"></i>
+      </div>
+      <div class="col-xs-3 col-lg-2">
+        <p>Correct Rate</p>
+        <span id="rate-span" class="animated">0/0</span>
+      </div>
+      <div class="col-xs-3 col-lg-2">
+        <p>Correct Streak</p>
+        <span id="streak-span" class="animated">0</span>
+      </div>
+      <div class="col-xs-3 col-lg-2">
+        <p><span>Avg. </span>Response Time (s)</p>
+        <span id="response-time-span" class="animated">0</span>
+      </div>
+    </div>
+  </div>
+</div>
+
   <div id="viewDiv" class="container"></div>
   <div id="stripe">
     <button id="reset">NEW COUNTRY</button>
